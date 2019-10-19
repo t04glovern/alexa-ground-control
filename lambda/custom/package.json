@@ -1,0 +1,13 @@
+{
+  "name": "ground-control",
+  "version": "1.0.0",
+  "description": "alexa skill for controlling drones",
+  "main": "index.js",
+  "author": "Nathan Glover",
+  "license": "Apache License",
+  "dependencies": {
+    "ask-sdk-core": "^2.7.0",
+    "ask-sdk-model": "^1.19.0",
+    "request": "^2.88.0"
+  }
+}

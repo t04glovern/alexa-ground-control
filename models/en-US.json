@@ -1,0 +1,42 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "ground control",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "SpeedOptionIntent",
+          "slots": [
+            {
+              "name": "SpeedOption",
+              "type": "LIST_OF_SPEED_OPTIONS"
+            }
+          ],
+          "samples": [
+            "speed {SpeedOption}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "LIST_OF_SPEED_OPTIONS",
+          "values": [
+            { "name":{ "value":"up" }},
+            { "name":{ "value":"down" }}
+          ]
+        }
+      ]
+    }
+  }
+}
