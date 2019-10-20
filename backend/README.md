@@ -47,10 +47,12 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 # Test locally
-serverless invoke local -f speed --path test_data.json
+serverless invoke local -f altitude --path test_altitude.json
+serverless invoke local -f waypoint --path test_waypoint.json
 serverless invoke local -f poll
 
 # Test Deployed version
-serverless invoke -f speed --path test_data.json
+serverless invoke -f altitude --path test_altitude.json
+serverless invoke -f waypoint --path test_waypoint.json
 serverless invoke -f poll
 ```

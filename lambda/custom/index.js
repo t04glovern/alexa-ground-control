@@ -12,7 +12,8 @@ const SessionEnd = require('./intents/base/SessionEnd');
 const Stop = require('./intents/base/Stop');
 
 // Custom Intents
-const SpeedOption = require('./intents/SpeedOption');
+const AltitudeOption = require('./intents/AltitudeOption');
+const WaypointOption = require('./intents/WaypointOption');
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
@@ -22,7 +23,8 @@ exports.handler = skillBuilder
     Launch,
     SessionEnd,
     Stop,
-    SpeedOption   // Custom Intents
+    AltitudeOption,   // Custom Intents
+    WaypointOption
   )
   .addErrorHandlers(Errors)
   .lambda();

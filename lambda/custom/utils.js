@@ -5,19 +5,20 @@
 "use strict";
 
 const request = require("request");
+const config = require("./config");
 
 module.exports = {
-  changeSpeedOption: function (speed_option, callback) {
+  changeAltitudeOption: function (altitude_option, callback) {
 
     var options = {
       method: 'POST',
-      url: 'https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/speed',
+      url: `${config.url}/altitude`,
       headers: {
         'cache-control': 'no-cache',
         'Content-Type': 'application/json'
       },
       body: {
-        'speed_option': speed_option
+        'altitude_change': altitude_option
       },
       json: true
     };
@@ -26,7 +27,29 @@ module.exports = {
       if (error) {
         callback();
       }
-      callback(body.status);
+      callback(response);
+    });
+  },
+  changeWaypointOption: function (waypoint, callback) {
+
+    var options = {
+      method: 'POST',
+      url: `${config.url}/waypoint`,
+      headers: {
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json'
+      },
+      body: {
+        'go_waypoint': waypoint
+      },
+      json: true
+    };
+
+    request(options, function (error, response, body) {
+      if (error) {
+        callback();
+      }
+      callback(response);
     });
   }
 }

@@ -5,24 +5,24 @@ const utils = require("../utils");
 module.exports = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-      handlerInput.requestEnvelope.request.intent.name === 'SpeedOptionIntent';
+      handlerInput.requestEnvelope.request.intent.name === 'AltitudeIntent';
   },
   handle(handlerInput) {
     return new Promise((resolve, reject) => {
       const event = handlerInput.requestEnvelope;
       const res = require("../resources")(event.request.locale);
-      const color = getSpeedOption(event);
+      const color = getAltitudeOption(event);
 
       let speechText;
       let reprompt;
 
-      reprompt = res.strings.SPEED_CHANGE.replace("{0}", color);
+      reprompt = res.strings.ALTITUDE_CHANGE.replace("{0}", color);
 
-      utils.changeSpeedOption(color, response => {
+      utils.changeAltitudeOption(color, response => {
         if (!response) {
-          speechText = res.strings.SPEED_OPTION_NOT_FOUND.replace("{0}", color);
+          speechText = res.strings.ALTITUDE_OPTION_NOT_FOUND.replace("{0}", color);
         } else {
-          speechText = res.strings.SPEED_CHANGED.replace("{0}", color);
+          speechText = res.strings.ALTITUDE_CHANGED.replace("{0}", color);
         }
 
         const responseHandle = handlerInput.responseBuilder
@@ -35,15 +35,15 @@ module.exports = {
   }
 }
 
-function getSpeedOption(event) {
-  let speedOption;
-  const speedOptionSlot =
+function getAltitudeOption(event) {
+  let altitudeOption;
+  const altitudeOptionSlot =
     event.request.intent &&
     event.request.intent.slots &&
-    event.request.intent.slots.SpeedOption;
+    event.request.intent.slots.AltitudeOption;
 
-  if (speedOptionSlot && speedOptionSlot.value) {
-    speedOption = speedOptionSlot.value;
+  if (altitudeOptionSlot && altitudeOptionSlot.value) {
+    altitudeOption = altitudeOptionSlot.value;
   }
-  return speedOption;
+  return altitudeOption;
 }

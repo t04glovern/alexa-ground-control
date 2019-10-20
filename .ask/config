@@ -1,16 +1,14 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "amzn1.ask.skill.ef0fc3cb-9cde-45fd-b71e-33998a24eeb4",
-      "was_cloned": false,
       "merge": {},
       "resources": {
-        "manifest": {
-          "eTag": "341bc05c738d344b0e550b753bdc8fb9"
-        },
         "interactionModel": {
           "en-US": {
-            "eTag": "1073c2159509bdb117b78a84b465fdba"
+            "eTag": "51b24b3bc633815633cd7e122b77ec01"
+          },
+          "en-AU": {
+            "eTag": "cc7f893855293cbbe4ab4a77a0e1c879"
           }
         },
         "lambda": [
@@ -23,11 +21,15 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-alexa-ground-control-default",
             "handler": "index.handler",
-            "revisionId": "288fb51c-b908-43d4-8f54-b8bceff4eab4",
+            "revisionId": "31134b05-1ce3-4cda-bd91-b116de0e27a6",
             "runtime": "nodejs8.10"
           }
-        ]
-      }
+        ],
+        "manifest": {
+          "eTag": "0a30bb0bd00df14048486e8cf336a4e6"
+        }
+      },
+      "skill_id": "amzn1.ask.skill.5e5e99a6-804b-463f-8bbc-cd1d0045f310"
     }
   }
 }

@@ -21,29 +21,51 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(o)
 
 
-def speed(event, context):
-    body = event['body']
-    speed_option = body['speed_option']
+def altitude(event, context):
+    body = json.loads(event['body'])
+    altitude_change = body['altitude_change']
 
     # Construct message
     state = {
         "idempotency": str(uuid.uuid1()),
         "commands": [
             {
-                "command": "barrel_roll",
-                "argument": "false"
-            },
-            {
                 "command": "absolute_altitude",
-                "argument": 200
-            },
-            {
-                "command": "relative_altitude",
-                "argument": -50
-            },
+                "argument": altitude_change
+            }
+        ]
+    }
+
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table(dynamo_table)
+    response = table.put_item(
+        Item={
+            'droneId': drone_id,
+            'state': state
+        }
+    )
+
+    response = {
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+        },
+        "statusCode": 200
+    }
+
+    return response
+
+
+def waypoint(event, context):
+    body = json.loads(event['body'])
+    waypoint = body['go_waypoint']
+
+    # Construct message
+    state = {
+        "idempotency": str(uuid.uuid1()),
+        "commands": [
             {
                 "command": "go_waypoint",
-                "argument": "alpha"
+                "argument": waypoint
             }
         ]
     }

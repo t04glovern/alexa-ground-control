@@ -3,11 +3,22 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "name": "alexa-ground-control",
+          "name": "space apps ground control",
           "summary": "Ground control system for drone systems using voice control",
           "description": "Ground control system for drone",
           "examplePhrases": [
-            "Alexa open ground control",
+            "Alexa open space apps ground control",
+            "speed up",
+            "help"
+          ],
+          "keywords": []
+        },
+        "en-AU": {
+          "name": "space apps ground control",
+          "summary": "Ground control system for drone systems using voice control",
+          "description": "Ground control system for drone",
+          "examplePhrases": [
+            "Alexa open space apps ground control",
             "speed up",
             "help"
           ],

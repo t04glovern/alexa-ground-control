@@ -32,11 +32,18 @@ provider:
     DYNAMO_TABLE: ${self:custom.environment.DYNAMO_NAME}
 
 functions:
-  speed:
-    handler: handler.speed
+  altitude:
+    handler: handler.altitude
     events:
       - http:
-          path: speed
+          path: altitude
+          method: post
+          cors: true
+  waypoint:
+    handler: handler.waypoint
+    events:
+      - http:
+          path: waypoint
           method: post
           cors: true
   poll:
